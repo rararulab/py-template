@@ -1,0 +1,45 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.so
+
+# Envs / caches
+.venv/
+.env
+.env.local
+.python-version-local
+.mypy_cache/
+.pyright/
+.pytest_cache/
+.ruff_cache/
+.hypothesis/
+
+# Build artifacts
+dist/
+build/
+.coverage
+coverage.xml
+htmlcov/
+
+# OS / IDE
+.DS_Store
+.idea/
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+*.swp
+*.swo
+
+# Worktrees (local convention)
+.worktrees/
+
+# mkdocs build output
+site/
+
+# Local config
+config.toml
+config.yaml
+config.local.*
+logs/
