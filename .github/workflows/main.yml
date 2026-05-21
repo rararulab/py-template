@@ -51,7 +51,7 @@ jobs:
         run: uv run python scripts/check_coverage.py --xml coverage.xml
       - name: Upload coverage artifact
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: coverage-${{ matrix.os }}-${{ matrix.python-version }}
           path: coverage.xml
@@ -66,7 +66,7 @@ jobs:
       - uses: ./.github/actions/setup-python-env
       - name: Build distributions
         run: uvx --from build pyproject-build --installer uv
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: dist
           path: dist/
