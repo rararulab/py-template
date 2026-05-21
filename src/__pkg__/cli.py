@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Annotated
+
 import typer
 from rich.console import Console
 
@@ -16,8 +18,13 @@ app = typer.Typer(
 console = Console()
 
 
+# typer ≥0.13 added an overload whose default value carries ``ParamType[Unknown]``,
+# tripping pyright's reportUnknownMemberType. Suppression is the workaround until
+# typer ships fully-typed stubs (track astral-sh/typer#XXX).
 @app.command()
-def hello(name: str = typer.Argument("world", help="Who to greet.")) -> None:
+def hello(
+    name: Annotated[str, typer.Argument(help="Who to greet.")] = "world",  # pyright: ignore[reportUnknownMemberType]
+) -> None:
     """Print a greeting."""
     console.print(greet(name))
 

@@ -71,6 +71,12 @@ text = p.read_text()
 subs = {
     "__pkg__": "$PKG_NAME",
     "__PKG__": "$PKG_NAME",
+    # The valid-PEP-508 placeholder used in pyproject.toml so the bare
+    # template's CI can run uv lock / install. setup-template.sh rewrites
+    # it to the real distribution name on bootstrap.
+    "py-template-placeholder": "$PROJECT_NAME",
+    "Placeholder description — replaced by setup-template.sh.": "$DESCRIPTION",
+    '"placeholder", email = "placeholder@example.com"': '"$AUTHOR_NAME", email = "$AUTHOR_EMAIL"',
     "__PROJECT_NAME__": "$PROJECT_NAME",
     "__PROJECT_DESCRIPTION__": "$DESCRIPTION",
     "__AUTHOR_NAME__": "$AUTHOR_NAME",

@@ -1,8 +1,10 @@
+# Placeholder distribution name kept valid (PEP 508) so `uv lock` works on
+# the bare template. `setup-template.sh` replaces it during bootstrap.
 [project]
-name = "__PROJECT_NAME__"
+name = "py-template-placeholder"
 version = "0.0.1"
-description = "__PROJECT_DESCRIPTION__"
-authors = [{ name = "__AUTHOR_NAME__", email = "__AUTHOR_EMAIL__" }]
+description = "Placeholder description — replaced by setup-template.sh."
+authors = [{ name = "placeholder", email = "placeholder@example.com" }]
 readme = "README.md"
 requires-python = ">=3.12,<4.0"
 license = "Apache-2.0"
@@ -21,10 +23,10 @@ dependencies = [
 ]
 
 [project.urls]
-Repository = "https://github.com/__GITHUB_ORG__/__PROJECT_NAME__"
+Repository = "https://github.com/__GITHUB_ORG__/py-template-placeholder"
 
 [project.scripts]
-__PROJECT_NAME__ = "__PKG__.cli:app"
+py-template-placeholder = "__pkg__.cli:app"
 
 [dependency-groups]
 dev = [
@@ -52,7 +54,7 @@ only-include = ["src/__pkg__", "tests"]
 
 [tool.hatch.build.targets.wheel]
 sources = ["src"]
-only-include = ["src/__pkg__"]
+packages = ["src/__pkg__"]
 
 # ---------------------------------------------------------------------------
 # Type checking — mypy strict + pyright strict (parity with VS Code Pylance).
