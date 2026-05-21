@@ -1,0 +1,82 @@
+name: Chore / Maintenance
+description: CI, dependencies, tooling, or other maintenance tasks
+labels: ["chore"]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: What maintenance work is needed?
+    validations:
+      required: true
+
+  - type: dropdown
+    id: component
+    attributes:
+      label: Component
+      description: Which area is affected?
+      options:
+        - src (library / runtime code)
+        - cli (command-line interface)
+        - tests (test suite)
+        - ci (CI/CD, build, release)
+        - docs (documentation)
+        - build (packaging, dependencies)
+        - other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: agent-owner
+    attributes:
+      label: Agent owner
+      description: Who should implement the first pass?
+      options:
+        - agent:claude
+        - agent:codex
+        - human / unassigned
+    validations:
+      required: true
+
+  - type: textarea
+    id: agent-task-packet
+    attributes:
+      label: Agent Task Packet
+      description: Context the implementation agent must read before editing.
+      value: |
+        ### Read First
+        - `AGENT.md`
+        - `CLAUDE.md`
+        - Folder-local `AGENT.md` files for any code you will touch
+
+        ### Expected Touch Points
+        -
+
+        ### Forbidden / Avoid
+        -
+
+        ### Existing Patterns
+        -
+
+        ### Validation
+        - `just check`
+        - `just test`
+
+        ### Failure Modes To Cover
+        -
+      render: markdown
+    validations:
+      required: true
+
+  - type: textarea
+    id: completion-criteria
+    attributes:
+      label: Completion Criteria
+      description: Concrete conditions that must be true before the PR is ready.
+      placeholder: |
+        - [ ] Maintenance change is scoped to the requested area.
+        - [ ] Affected docs or automation notes are updated.
+        - [ ] `just check && just test` passes.
+      render: markdown
+    validations:
+      required: true

@@ -26,11 +26,36 @@ unrepresentable); Zen of Python.
 - Source under `src/__pkg__/`. Tests under `tests/`. Stdlib-only scripts
   under `scripts/`.
 
-## 4. Workflow
+## 4. Workflow — issue → branch → PR (mandatory)
 
-No edits on `main`. Use issue → branch (or worktree) → PR. One-liners
-included. Required PR labels: type (`bug|enhancement|refactor|chore|docs`)
-+ component.
+**No edits on `main`.** One-line fixes included. State machine:
+
+```
+gh issue create (use a template)
+  → git checkout -b <type>/<slug>     # or: git worktree add .worktrees/<slug>
+  → edit + just check + just test     # inside branch / worktree only
+  → push + gh pr create               # PR body uses .github/pull_request_template.md
+  → gh pr checks --watch              # green before reporting done
+  → merge on GitHub
+```
+
+Required labels on every issue and PR: `agent:{claude|codex}` + type
+(`bug|enhancement|refactor|chore|documentation`) + component (`src|cli|
+tests|ci|docs|build`).
+
+**The GitHub issue is the single source of task truth.** Agents MUST read
+the issue body (especially the **Agent Task Packet** and **Completion
+Criteria** sections) and the latest issue comments before editing. Do
+not create shadow plan/task files. Planner notes go in issue comments;
+implementation notes go in the PR body (**Issue context used** +
+**Deviations** + **Agent notes**); reviewer findings go in PR reviews.
+
+Use the issue templates under [`.github/ISSUE_TEMPLATE/`](.github/ISSUE_TEMPLATE/)
+— each one forces the Agent Task Packet + Completion Criteria fields.
+
+Multi-agent: one agent, one branch (or worktree), one PR. Coordinate via
+issue comments, never by editing each other's branches. Parallel only
+for disjoint files; otherwise stack PRs.
 
 ## 5. Anti-sycophancy
 
