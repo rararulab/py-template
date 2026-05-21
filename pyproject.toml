@@ -2,7 +2,7 @@
 # the bare template. `setup-template.sh` replaces it during bootstrap.
 [project]
 name = "py-template-placeholder"
-version = "0.0.1"
+version = "0.0.2"
 description = "Placeholder description — replaced by setup-template.sh."
 authors = [{ name = "placeholder", email = "placeholder@example.com" }]
 readme = "README.md"
